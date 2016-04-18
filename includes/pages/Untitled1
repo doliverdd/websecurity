@@ -2,133 +2,8 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="drewoliver" >
-
-    <title>Security Updates</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Timeline CSS -->
-    <link href="../dist/css/timeline.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-
-   
-    <!-- Custom Fonts -->
-    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    <link type="text/css" rel="stylesheet" href="../jquery.qtip.custom/jquery.qtip.css" />
-    <!-- jQuery FIRST i.e. before qTip (and all other scripts too usually) -->
-<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-
-<!-- Include either the minifed or production version, NOT both!! -->
-<script type="text/javascript" src="../jquery.qtip.custom/jquery.qtip.js"></script>
-    
-    
-    
-<script type = "text/javascript">
-function showCurrentUpdates() {
-  document.getElementById("reportPanel").style.visibility="hidden";
-  document.getElementById("showupdates").style.visibility="hidden";
-
-var xhttp_current_month;
-  var xhttp_previous_month;
-  
-  var currentTime = new Date();
-  var month = ('0' + (currentTime.getMonth()+1))
-  var pmonth = ('0' + (currentTime.getMonth()))
-  var year = currentTime.getFullYear();
-
-  var current = year + '-' + month;
-  var previous = year + '-' + pmonth;
-  var displaycurrent = year + '-' + month + '-' + currentTime.getDate();
-  
-
-
-
-  xhttp_current_month = new XMLHttpRequest();
-  xhttp_current_month.onreadystatechange = function() {
-    if (xhttp_current_month.readyState == 4 && xhttp_current_month.status == 200) {
-      document.getElementById("utm").innerHTML = xhttp_current_month.responseText;
-    }
-  };
-  xhttp_current_month.open("GET", "../../showCurrentUpdates.php?q="+current, true);
-  xhttp_current_month.send();   
-
-
-
-  xhttp_previous_month = new XMLHttpRequest();
-  xhttp_previous_month.onreadystatechange = function() {
-    if (xhttp_previous_month.readyState == 4 && xhttp_previous_month.status == 200) {
-      document.getElementById("ulm").innerHTML = xhttp_previous_month.responseText;
-    }
-  };
-  xhttp_previous_month.open("GET", "../../showCurrentUpdates.php?q="+previous, true);
-  xhttp_previous_month.send();   
-
-
-xhttp_count_hosts = new XMLHttpRequest();
-  xhttp_count_hosts.onreadystatechange = function() {
-    if (xhttp_count_hosts.readyState == 4 && xhttp_count_hosts.status == 200) {
-      document.getElementById("shc").innerHTML = xhttp_count_hosts.responseText;
-    }
-  };
-  xhttp_count_hosts.open("GET", "../../showHostCount.php", true);
-  xhttp_count_hosts.send();   
-
-}
-
-
-function showCurrentUpdateDetail() {
-
-document.getElementById("showupdates").style.visibility="visible";
-xhttp_update_detail = new XMLHttpRequest();
-  xhttp_update_detail.onreadystatechange = function() {
-    if (xhttp_update_detail.readyState == 4 && xhttp_update_detail.status == 200) {
-      document.getElementById("showupdates").innerHTML = xhttp_update_detail.responseText;
-    }
-  };
-  xhttp_update_detail.open("GET", "../../showCurrentDetail.php", true);
-  xhttp_update_detail.send();   
-  }
-  
-  
-function showHostUpdates(tdValue) {
-document.getElementById("showupdates").style.visibility="visible";
-tdId=tdValue.innerHTML;
-
-xhttp_show_update_detail = new XMLHttpRequest();
-  xhttp_show_update_detail.onreadystatechange = function() {
-    if (xhttp_show_update_detail.readyState == 4 && xhttp_show_update_detail.status == 200) {
-      document.getElementById("showupdates").innerHTML = xhttp_update_detail.responseText;
-    }
-  };
-  xhttp_update_detail.open("GET", "../../showHostUpdates.php?q="+tdId, true);
-  xhttp_update_detail.send();   
-  }
-  </script>
-  
- 
-
+<title></title>
 </head>
-
 <body onload = "showCurrentUpdates();">
 
     <div id="wrapper">
@@ -138,7 +13,7 @@ xhttp_show_update_detail = new XMLHttpRequest();
             <div class="navbar-header">
                 
                 <a class="navbar-brand" href="index.html">USF Security Database</a>
-            </div>
+            
             <!-- /.navbar-header -->
 
             <!-- /.navbar-top-links -->
@@ -160,11 +35,7 @@ xhttp_show_update_detail = new XMLHttpRequest();
                         <li>
                             <a id='test' href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
-                        </ul>
-                        </div>
-       
-       </div>
-       
+       <div id="updatesPanel">updates panel</div>
         </nav>
 
         <div id="page-wrapper">
@@ -242,23 +113,36 @@ xhttp_show_update_detail = new XMLHttpRequest();
                         </a>
                     </div>
                 </div>
-              </div>
+              
             <!-- /.row -->
-             <div class="row">
-            
-				
-                                </div>      
-            
-                                 </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div  class="panel panel-default">
+                        <div  class="panel-heading">
+                            <i  class="fa fa-file-o fa-fw">
+                            <div class="pull-right">
+                               <div class="panel-body">
+                           <div id="reportSection">
+											               reportSection      
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                            </i> Listing of hosts that have had updates applied this month.
+                            </div>
+                        </div>
+                                </div>
+                               
+                            </div>
+                        </div> 
+                        <!-- /.panel-heading -->
+                       
+                        </div>
+                        </div>
                         
-                    </div>
                             
-  <div class="row">
-            
-				<div id="showupdates">updates panel</div>
-                                    <div id="showupdates" >Updates Applied This Month</div>
-                                    <div id="showupdates" >Updates Applied This Month</div>
-                                </div>          
+                                               <!-- /.panel-body -->
+                  <!--</div>    -->          
+              
+              
                
 
     <!-- jQuery -->

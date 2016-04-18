@@ -46,6 +46,7 @@
 <script type = "text/javascript">
 function showCurrentUpdates() {
   document.getElementById("reportPanel").style.visibility="hidden";
+  document.getElementById("showupdates").style.visibility="hidden";
 
 var xhttp_current_month;
   var xhttp_previous_month;
@@ -97,11 +98,11 @@ xhttp_count_hosts = new XMLHttpRequest();
 
 function showCurrentUpdateDetail() {
 
-document.getElementById("updatesPanel").style.visibility="visible";
+document.getElementById("showupdates").style.visibility="visible";
 xhttp_update_detail = new XMLHttpRequest();
   xhttp_update_detail.onreadystatechange = function() {
     if (xhttp_update_detail.readyState == 4 && xhttp_update_detail.status == 200) {
-      document.getElementById("updatesPanel").innerHTML = xhttp_update_detail.responseText;
+      document.getElementById("showupdates").innerHTML = xhttp_update_detail.responseText;
     }
   };
   xhttp_update_detail.open("GET", "../../showCurrentDetail.php", true);
@@ -110,13 +111,13 @@ xhttp_update_detail = new XMLHttpRequest();
   
   
 function showHostUpdates(tdValue) {
-
+document.getElementById("showupdates").style.visibility="visible";
 tdId=tdValue.innerHTML;
 
 xhttp_show_update_detail = new XMLHttpRequest();
   xhttp_show_update_detail.onreadystatechange = function() {
     if (xhttp_show_update_detail.readyState == 4 && xhttp_show_update_detail.status == 200) {
-      document.getElementById("reportSection").innerHTML = xhttp_update_detail.responseText;
+      document.getElementById("showupdates").innerHTML = xhttp_update_detail.responseText;
     }
   };
   xhttp_update_detail.open("GET", "../../showHostUpdates.php?q="+tdId, true);
@@ -159,7 +160,11 @@ xhttp_show_update_detail = new XMLHttpRequest();
                         <li>
                             <a id='test' href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
-       <div id="updatesPanel">updates panel</div>
+                        </ul>
+                        </div>
+       
+       </div>
+       
         </nav>
 
         <div id="page-wrapper">
@@ -237,39 +242,19 @@ xhttp_show_update_detail = new XMLHttpRequest();
                         </a>
                     </div>
                 </div>
-              
+              </div>
             <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-8">
-                    <div id="reportPanel" class="panel panel-default">
-                        <div  class="panel-heading">
-                            <i  class="fa fa-file-o fa-fw"></i> Listing of hosts that have had updates applied this month.
-                            <div class="pull-right">
-                               <div class="panel-body">
-                           <div id = "nothing">
-											               reportSection      
-                            </div>
-                            
-                        </div>
-                                </div>
-                               
-                            </div>
-                        </div> 
-                        <!-- /.panel-heading -->
-                       
-                        </div>
-                        </div>
+             <div class="row">
+            <div id="showupdates">updates panel</div>
+                                    <div id="showupdates" >Updates Applied This Month</div>
+                                    
+                                </div>      
+            
+                                 </div>
                         
-                 </div>
-              
-
-                
-                        </div>
-                        <!-- /.panel-body -->
-                  <!--</div>    -->          
-              
-              
-               
+                    </div>
+                            
+ 
 
     <!-- jQuery -->
     
